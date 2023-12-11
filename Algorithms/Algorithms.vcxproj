@@ -154,11 +154,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Algorithms.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="KnootMorisPratt.h" />
-    <ClInclude Include="RabinKarp.h" />
+    <ClInclude Include="functions\ED.h" />
+    <ClInclude Include="functions\KnootMorisPratt.h" />
+    <ClInclude Include="functions\LCS.h" />
+    <ClInclude Include="functions\RabinKarp.h" />
+    <ClInclude Include="support_functions\io.h" />
+    <ClInclude Include="support_functions\time.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
