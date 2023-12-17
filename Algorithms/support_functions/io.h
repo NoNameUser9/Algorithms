@@ -5,7 +5,7 @@
 #include <sstream>
 #include <string>
 
-void read_file(std::string& a, const std::string& path)
+inline void read_file(std::string& text, const std::string& path)
 {
     std::string line;
     std::stringstream stream;
@@ -19,6 +19,6 @@ void read_file(std::string& a, const std::string& path)
     while (getline(fin, line))
         stream << line << '\n';
 
-    a = stream.str();
+    text = stream.str();
     fin.close();
 }

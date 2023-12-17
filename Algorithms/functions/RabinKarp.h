@@ -5,7 +5,7 @@
 void searchRabinKarp(std::string const& text, std::string const& pattern, const int prime)
 {
     if(text.size() < pattern.size())
-        throw std::range_error("\npattern out of range!\n");
+        throw std::out_of_range("pattern bigger than text!");
     
     const size_t pattern_length = pattern.length();
     const size_t text_length = text.length();

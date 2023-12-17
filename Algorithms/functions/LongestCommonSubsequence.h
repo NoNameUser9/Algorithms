@@ -31,17 +31,12 @@ inline std::string LongestCommonSubsequence(const std::string& str1, const std::
     // Восстанавливаем наибольшую общую подпоследовательность
     std::string lcs;
     lcs.resize((m+1)*(n+1));
-    size_t t = dp[m][n];
-    try
-    {
-        if(dp[m][n] == 0)
-            throw std::exception("\nerror of LCS\n");
-        lcs[dp[m][n]] = '\0';
-    }
-    catch (std::exception& ex)
-    {
-        std::cerr << ex.what();
-    }
+    // size_t t = dp[m][n];
+
+    if(dp[m][n] == 0)
+        throw std::logic_error("error of LCS");
+    lcs[dp[m][n]] = '\0';
+
     
     size_t i = m, j = n, index = dp[m][n];
     while (i > 0 && j > 0)
