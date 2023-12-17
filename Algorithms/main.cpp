@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
 
-#include "functions/ED.h"
+#include "functions\EditDistance.h"
 #include "support_functions/io.h"
 #include "functions/KnootMorisPratt.h"
-#include "functions/LCS.h"
+#include "functions\LongestCommonSubsequence.h"
 #include "functions/RabinKarp.h"
 #include "support_functions/time.h"
 
@@ -14,8 +14,10 @@ std::string path = R"(C:\Users\User\Documents\test.txt)";
 int main()
 {
     setlocale(LC_ALL, "rus");
-    std::string pattern = "of";
-    const int prime = 101; // Простое число для вычисления хэша, обычно берут большое простое число
+    // std::string pattern = "test text for algorithm";
+    // std::string pattern = "test text for algorithm and for test of test";
+    std::string pattern = "Rayanov Daniil Ilgizovich";
+    const unsigned short prime = 101; // Простое число для вычисления хэша, обычно берут большое простое число
     std::string text;
     read_file(text, path);
   
@@ -29,7 +31,8 @@ int main()
                 "2. Найти подстроку с помощью алгоритма Кнута-Мориса-Пратта\n"
                 "3. Найти наибольшую общюю подпоследовательность\n"
                 "4. Вычислить редакционное расстояние\n"
-                "5. Выход\n";
+                "5. Ввести текст для поиска [" << pattern << "]\n"
+                "6. Выход\n";
 
         std::cin >> choice;
         switch (choice)
@@ -39,7 +42,14 @@ int main()
             system("cls");
             NNU9::time t;
             t.start();
-            searchRabinKarp(text, pattern, prime);
+            try
+            {
+                searchRabinKarp(text, pattern, prime);
+            }
+            catch (std::exception& ex)
+            {
+                std::cerr << ex.what();
+            }
             t.end();
             std::cout << t.count().count() << "\n";
             
@@ -55,7 +65,6 @@ int main()
             t.end();
 
             std::cout << t.count().count() << "\n";
-
             system("pause");
 
             break;
@@ -68,10 +77,10 @@ int main()
             /*char* lcs = */
             NNU9::time t;
             t.start();
-            const unsigned int size = longestCommonSubsequence(text, pattern);
+            auto lcs = LongestCommonSubsequence(text, pattern);
             t.end();
             std::cout << t.count().count() << "\n";
-            std::cout << "Наибольшая общая подпоследовательность: " << size << '\n';
+            std::cout << "Наибольшая общая подпоследовательность: " << lcs << '\n';
 
             system("pause");
 
@@ -91,8 +100,8 @@ int main()
 
                 std::cout << t.count().count() << "\n";
                 std::cout << "1.change 1 word [" << word1 << "]\n"
-                        "2.change 2 word [" << word2 << "]\n"
-                        "3.exit\n";
+                            "2.change 2 word [" << word2 << "]\n"
+                            "3.exit\n";
 
                 unsigned short ch4 = 0;
                 std::cin >> ch4;
@@ -100,12 +109,27 @@ int main()
                 {
                 case 1:
                 {
-                    std::cin >> word1;
+                    char c[1] {};
+                    std::string ts;
+                    constexpr unsigned short size = 1024;
+                    ts.resize(size);
+                    std::cout << "Enter the word: ";
+                    std::cin.getline(c, 1);
+                    std::cin.getline(const_cast<char*>(ts.c_str()), size);
+                    word1 = ts;
+                    
                     break;
                 }
                 case 2:
                 {
-                    std::cin >> word2;
+                    char c[1] {};
+                    std::string ts;
+                    constexpr unsigned short size = 1024;
+                    ts.resize(size);
+                    std::cout << "Enter the word: ";
+                    std::cin.getline(c, 1);
+                    std::cin.getline(const_cast<char*>(ts.c_str()), size);
+                    word2 = ts;
                     break;
                 }
                 case 3:
@@ -123,6 +147,22 @@ int main()
             break;
         }
         case 5:
+            {
+                system("cls");
+                char c[1] {};
+                std::string ts;
+                constexpr unsigned short size = 1024;
+                ts.resize(size);
+                std::cout << "Enter the word: ";
+                std::cin.getline(c, 1);
+                std::cin.getline(const_cast<char*>(ts.c_str()), size);
+                // std::cout << "Введите слово:";
+                // std::cin >> pattern;
+                pattern = ts;
+                // system("pause");
+                break;
+            }
+        case 6:
         {
             exit(EXIT_SUCCESS);
         }

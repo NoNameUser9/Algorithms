@@ -5,8 +5,8 @@ namespace NNU9
 {
     class time
     {
-        std::chrono::time_point<chrono::system_clock> start_ = std::chrono::system_clock::now();
-        std::chrono::time_point<chrono::system_clock> end_ = std::chrono::system_clock::now();
+        std::chrono::time_point<std::chrono::system_clock> start_ = std::chrono::system_clock::now();
+        std::chrono::time_point<std::chrono::system_clock> end_ = std::chrono::system_clock::now();
     public:
         void start()
         {
@@ -16,7 +16,7 @@ namespace NNU9
         {
             end_ = std::chrono::system_clock::now();
         }
-        auto count()
+        auto count() const
         {
             return std::chrono::duration<double, std::ratio<1, 1>>(end_ - start_);
         }

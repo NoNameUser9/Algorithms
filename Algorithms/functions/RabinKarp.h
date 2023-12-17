@@ -4,6 +4,9 @@
 // using namespace std;
 void searchRabinKarp(std::string const& text, std::string const& pattern, const int prime)
 {
+    if(text.size() < pattern.size())
+        throw std::range_error("\npattern out of range!\n");
+    
     const size_t pattern_length = pattern.length();
     const size_t text_length = text.length();
     int pattern_hash = 0; // Хэш подстроки pattern
@@ -31,7 +34,7 @@ void searchRabinKarp(std::string const& text, std::string const& pattern, const 
                 if (text[i + j] != pattern[j])
                     break;
             if (j == pattern_length)
-                std::cout << "Founded similar text from pos " << i << std::endl;
+                std::cout << "Founded similar text from pos " << i << '\n';
         }
 
         // Пересчитываем хэш для следующего окна текста
