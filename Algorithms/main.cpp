@@ -1,12 +1,12 @@
 #include <iostream>
 #include <string>
 
-#include "functions/EditDistance.h"
-#include "support_functions/io.h"
-#include "functions/KnootMorisPratt.h"
-#include "functions/LongestCommonSubsequence.h"
-#include "functions/RabinKarp.h"
-#include "support_functions/time.h"
+#include "functions\EditDistance.hxx"
+#include "support_functions\io.hxx"
+#include "functions\KnootMorisPratt.hxx"
+#include "functions\LongestCommonSubsequence.hxx"
+#include "functions\RabinKarp.hxx"
+#include "support_functions\time.hxx"
 
 #define VER "0.1.0"
 
